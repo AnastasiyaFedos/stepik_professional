@@ -1,0 +1,94 @@
+﻿''' 
+Задание: 
+Дан список сотрудников организации, в котором указаны их фамилии, имена и даты рождения. 
+Напишите программу, которая определяет самого молодого сотрудника, празднующего свой день рождения в течение ближайших семи дней от текущей даты.
+
+Формат входных данных
+На вход программе в первой строке подается текущая дата в формате DD.MM.YYYY, в следующей строке вводится натуральное число n — количество сотрудников, работающих в организации. 
+В последующих n строках вводятся данные о каждом сотруднике: имя, фамилия и дата рождения, разделённые пробелом. 
+Дата рождения указывается в формате DD.MM.YYYY.
+
+Формат выходных данных
+Программа должна определить самого молодого сотрудника, празднующего свой день рождения в течение ближайших семи дней, и вывести его имя и фамилию, разделив пробелом. 
+Если таких сотрудников нет, программа должна вывести текст:
+Дни рождения не планируются
+
+Примечание 1. Гарантируется, что у всех сотрудников даты рождения различны.
+Примечание 2. Например, для даты 01.11.2021 ближайшими семью днями являются:
+02.11.2021, 03.11.2021, 04.11.2021, 05.11.2021, 06.11.2021, 07.11.2021, 08.11.2021
+
+От: 20 октября 2023 г. в 15:20
+'''
+
+from datetime import timedelta, datetime
+
+#ввод даты, от которой рассчитываются ближайшие семь дней
+input_date = datetime.strptime(input(), '%d.%m.%Y')
+#создание списка 7 ближайших дат; создание списка кортежей, содержащих день и месяц дня рождения
+near_date = [input_date + timedelta(days=i) for i in range(1, 8)]
+tuple_near_date = [(near_date[i].day, near_date[i].month) for i in range(len(near_date))]
+
+#ввод кол-ва сотрудников, ввод и создание списка сотрудников (имя, фамилия и дата ДР)
+employees = []
+for i in range(int(input())):
+    name, surname, birthday_day = input().split()
+    format_birthday_day = datetime.strptime(birthday_day, '%d.%m.%Y')
+    employees.append((name, surname, (format_birthday_day.day, format_birthday_day.month), format_birthday_day.year, format_birthday_day))
+
+date_overlap, count = [], 0
+
+while count != len(tuple_near_date):
+    for i in range(len(employees)):
+        if tuple_near_date[count] in employees[i]:
+            date_overlap.append([employees[i][0], employees[i][1], employees[i][3]])
+    
+    count += 1
+
+if date_overlap != []:
+    min_date_employees = max(date_overlap, key= lambda x: x[2])
+    print(min_date_employees[0], min_date_employees[1])
+else:
+    print('Дни рождения не планируются')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

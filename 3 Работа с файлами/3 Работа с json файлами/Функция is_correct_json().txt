@@ -1,0 +1,56 @@
+﻿''' 
+Задание: 
+Реализуйте функцию is_correct_json(), которая принимает один аргумент:
+
+string — произвольная строка
+Функция должна возвращать True, если строка string удовлетворяет формату JSON, или False в противном случае.
+
+От: 31 октября 2023 г.
+'''
+
+def is_correct_json(json_str):
+    import json
+    try:
+        data = json.loads(json_str)
+        return True
+    except:
+        return False
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

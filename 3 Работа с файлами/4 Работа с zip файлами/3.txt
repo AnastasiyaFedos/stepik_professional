@@ -1,0 +1,102 @@
+﻿''' 
+Задание: 
+Вам доступен архив data.zip, содержащий различные папки и файлы. 
+Среди них есть несколько JSON файлов, каждый из которых содержит информацию о каком-либо футболисте:
+
+{
+   "first_name": "Gary",
+   "last_name": "Cahill",
+   "team": "Chelsea",
+   "position": "Defender"
+}
+У футболиста имеются следующие атрибуты: 
+	first_name — имя
+	last_name — фамилия
+	team — название футбольного клуба
+	position — игровая позиция
+Напишите программу, которая обрабатывает только данные JSON файлы и выводит имена и фамилии футболистов, выступающих за футбольный клуб Arsenal. 
+Футболисты должны быть расположены в лексикографическом порядке имен, а при совпадении — в лексикографическом порядке фамилий, каждый на отдельной строке.
+
+Примечание 1. Обратите внимание, что наличие у файла расширения .json не гарантирует, что он является корректным текстовым файлом в формате JSON. Для того чтобы определить, является ли файл корректным текстовым файлом в формате JSON, воспользуйтесь конструкцией try-except и функцией is_correct_json() из предыдущего урока.
+Примечание 2. Начальная часть ответа выглядит так:
+
+Alex Iwobi
+Alexis Sanchez
+...
+
+От: 7 ноября 2023 г.
+'''
+
+import json
+from zipfile import ZipFile
+
+def is_correct_json(json_str):
+    try:
+        player = json.load(json_str)
+        if player['team'] == 'Arsenal':
+          return player['first_name'], player['last_name']
+        pass
+    except:
+        pass
+
+with ZipFile('data.zip') as zip_file:
+    info = zip_file.infolist()
+    filter_info = filter(lambda x: x.filename.endswith('.json'), info)
+    players = []
+    for file in filter_info:
+      with zip_file.open(file) as f:
+        player = is_correct_json(f)
+        if player:
+          players.append(player)
+
+for player in sorted(players):
+  print(player[0], player[1])
+      
+      
+      
+      
+      
+      
+      
+      
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+﻿''' 
+Задание: 
+Реализуйте функцию fill_up_missing_dates(), которая принимает на вход один аргумент:
+	dates — список строковых дат в формате DD.MM.YYYY
+Функция должна возвращать список, в котором содержатся все даты из списка dates, расположенные в порядке возрастания, а также все недостающие промежуточные даты.
+
+Примечание 1. Рассмотрим первый тест. Список dates содержит период с 01.11.2021 по 07.11.2021:
+
+dates = ['01.11.2021', '07.11.2021', '04.11.2021', '03.11.2021']
+в котором отсутствуют даты 02.11.2021, 05.11.2021, 06.11.2021. Тогда вызов функции:
+ 	fill_up_missing_dates(dates)
+должен вернуть список: 
+	['01.11.2021', '02.11.2021', '03.11.2021', '04.11.2021', '05.11.2021', '06.11.2021', '07.11.2021']
+Примечание 2. Функция должна создавать и возвращать новый список, а не изменять переданный.
+
+От: 12 октября 2023 г. в 17:19
+'''
+
+def fill_up_missing_dates(dates):
+    from datetime import datetime, timedelta
+    
+    formating_dates = list(map(lambda x: datetime.strptime(x, '%d.%m.%Y'), dates))
+    max_date, min_date = max(formating_dates), min(formating_dates)
+    diff_date = max_date - min_date
+    count = 0
+    result_date = []
+    
+    for _ in range(diff_date.days + 1):
+        result_date.append((min_date + timedelta(days=count)).strftime('%d.%m.%Y'))
+        count += 1
+        
+    return result_date
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

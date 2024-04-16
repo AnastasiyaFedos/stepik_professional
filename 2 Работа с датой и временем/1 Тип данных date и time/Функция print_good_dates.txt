@@ -1,0 +1,80 @@
+﻿''' 
+Задание: 
+Тимур считает дату «интересной», если её год совпадает с годом его рождения, а сумма номера месяца и номера дня равна его возрасту. 
+Год рождения Тимура — 1992, возраст — 29 лет.
+
+Реализуйте функцию print_good_dates(), которая принимает один аргумент:
+  dates — список дат (тип date)
+Функция должна выводить «интересные» даты в порядке возрастания, каждую на отдельной строке, в формате  month_name DD, YYYY, где month_name — полное название месяца на английском. 
+
+Примечание 1. Если в функцию передается пустой список или список без интересных дат, функция ничего не должна выводить.
+
+От: 21 сентября 2023 г. в 17:34
+'''
+
+from datetime import date
+
+def print_good_dates(dates):
+    timur_year, timur_age = 1992, 29
+    interesting_date = []
+    
+    for date in dates:
+        if (date.month + date.day) == timur_age and timur_year == date.year:
+            interesting_date.append(date)
+    
+    interesting_date = sorted(interesting_date)
+    for date in interesting_date:
+        print(date.strftime('%B %d, %Y'))
+    
+dates = [date(1992, 10, 19), date(1991, 12, 6), date(1992, 9, 20)]
+print_good_dates(dates)
+
+
+
+
+
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

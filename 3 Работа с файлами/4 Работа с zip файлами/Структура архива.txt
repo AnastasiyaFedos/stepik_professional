@@ -1,0 +1,111 @@
+﻿''' 
+Задание: 
+Вам доступен архив desktop.zip, содержащий различные папки и файлы. 
+Напишите программу, которая выводит его файловую структуру и объем каждого файла.
+
+Формат входных данных
+На вход программе ничего не подается.
+
+Формат выходных данных
+Программа должна вывести файловую структуру архива desktop.zip и объем каждого файла в несжатом виде. 
+Так как архив имеет собственную иерархию папок, каждый уровень вложенности должен быть выделен двумя пробелами.
+
+Примечание 1. Вывод на примере архива test.zip из конспекта:
+test
+  Картинки
+    1.jpg 88 KB
+    avatar.png 19 KB
+    certificate.png 43 KB
+    py.png 33 KB
+    World_Time_Zones_Map.png 2 MB
+    Снимок экрана.png 11 KB
+  Неравенства.djvu 5 MB
+  Программы
+    image_util.py 5 KB
+    sort.py 61 B
+  Разные файлы
+    astros.json 505 B
+Примечание 2. Объем файла записывается в самых крупных единицах измерения с округлением до целых.
+Примечание 3. Значения единиц измерения такие же, какие приняты в информатике:
+
+1 KB = 1024 B
+1 MB = 1024 KB
+1 GB = 1024 MB
+
+От: 8 ноября 2023 г.
+'''
+
+from zipfile import ZipFile
+
+def bytes(digital_bytes):
+  if digital_bytes < 1024:
+    return digital_bytes, 'B'
+  elif digital_bytes >= 1024 and digital_bytes < 1024 ** 2:
+    return round(digital_bytes / 1024), 'KB'
+  elif digital_bytes >= 1024 ** 2 and digital_bytes < 1024 ** 3:
+    return round(digital_bytes / (1024 ** 2)), 'MB'
+  else:
+    round(digital_bytes / (1024 ** 3)), 'GB'
+
+
+with ZipFile('desktop.zip') as zf:
+  info = zf.infolist()
+  for name in info:
+    if name.is_dir():
+      len_slesh = (name.filename).count('/') - 1
+      file = (name.filename).split('/')
+      print('  ' * len_slesh + file[-2])
+    else:
+      len_slesh = (name.filename).count('/')
+      file = (name.filename).split('/')
+      num, name_size = bytes(name.file_size) 
+      print('  ' * len_slesh + file[-1], num, name_size)
+      
+      
+      
+      
+      
+      
+      
+      
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

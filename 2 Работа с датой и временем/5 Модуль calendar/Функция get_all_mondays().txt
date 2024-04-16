@@ -1,0 +1,67 @@
+﻿''' 
+Задание: 
+Реализуйте функцию get_all_mondays(), которая принимает один аргумент:
+	year — натуральное число
+Функция должна возвращать отсортированный по возрастанию список всех дат (тип date) года year, выпадающих на понедельник.
+
+Примечание 1. Например, вызов:
+	get_all_mondays(2021)
+должен вернуть список:
+
+[datetime.date(2021, 1, 4), datetime.date(2021, 1, 11), ..., datetime.date(2021, 12, 20), datetime.date(2021, 12, 27)]
+
+От: 25 октября 2023 г. в 12:43
+'''
+
+import calendar
+from datetime import datetime, date
+
+def get_all_mondays(year):
+    monday_date = []
+    for i in range(1, 13):
+        month_calendar = calendar.monthcalendar(year, i)
+        for j in range(len(month_calendar)):
+            if month_calendar[j][0] != 0:
+                monday_date.append(date(year, i, month_calendar[j][0]))
+    return monday_date
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

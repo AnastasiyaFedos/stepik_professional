@@ -1,0 +1,85 @@
+﻿''' 
+Задание: 
+Реализуйте функцию saturdays_between_two_dates(), которая принимает два аргумента в следующем порядке:
+  start — начальная дата, тип date
+  end — конечная дата, тип date
+Функция должна возвращать количество суббот между датами start и end включительно.
+
+Примечание 1. Даты могут передаваться в любом порядке, то есть не гарантируется, что первая дата меньше второй.
+
+От: 21 сентября 2023 г. в 15:38
+'''
+
+from datetime import date
+
+date_list = []
+
+def saturdays_between_two_dates(date1, date2):
+    start = date1.toordinal()
+    end = date2.toordinal()
+    if start > end:
+        start, end = end, start
+    if start == end:
+        if date1.weekday() == 5:
+            return 1
+        else:
+            return 0
+    else:
+        count = 0
+        while start != end + 1:
+            if (date.fromordinal(start)).weekday() == 5:
+                count +=1
+            start += 1
+        return count
+
+
+
+
+
+
+
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

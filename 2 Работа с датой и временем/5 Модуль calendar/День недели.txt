@@ -1,0 +1,61 @@
+﻿''' 
+Задание: 
+Напишите программу, которая определяет день недели, соответствующий заданной дате.
+
+Формат входных данных
+На вход программе подается дата в формате YYYY-MM-DD.
+
+Формат выходных данных
+Программа должна вывести полное название дня недели на английском, который соответствует введенной дате.
+
+От: 25 октября 2023 г. в 11:00
+'''
+
+import calendar
+from datetime import datetime
+
+input_date = datetime.strptime(input(), '%Y-%m-%d')
+number_day_input_date = calendar.weekday(input_date.year, input_date.month, input_date.day)
+list_day_name = list(calendar.day_name)
+print(list_day_name[number_day_input_date])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

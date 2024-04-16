@@ -1,0 +1,64 @@
+﻿''' 
+Задание: 
+Реализуйте функцию num_of_sundays(), которая принимает на вход один аргумент:
+
+year — натуральное число, год
+Функция должна возвращать количество воскресений в году year.
+
+От: 10 октября 2023 г. в 15:10
+'''
+
+def num_of_sundays(y):
+    from datetime import datetime, timedelta
+    year = datetime(y, 1, 1)
+    count = 0
+    while year.year == int(y):
+        if year.isoweekday() == 7:
+            count += 1
+        year += timedelta(days=1)
+    return count
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
